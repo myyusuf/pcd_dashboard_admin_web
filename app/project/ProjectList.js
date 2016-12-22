@@ -4,7 +4,7 @@ import ToggleButton from '../base/components/ToggleButton';
 import TextBox from '../base/components/TextBox';
 import DataGrid from '../base/components/DataGrid';
 import AddProjectWindow from '../project/AddProjectWindow';
-// import EditProjectWindow from '../project/EditProjectWindow';
+import EditProjectWindow from '../project/EditProjectWindow';
 
 export default class ProjectList {
 

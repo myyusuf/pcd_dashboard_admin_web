@@ -1,12 +1,12 @@
 import { guid } from '../base/Utils';
 import Button from '../base/components/Button';
 import Form from '../base/components/Form';
-import AddWindow from '../base/components/AddWindow';
+import EditWindow from '../base/components/EditWindow';
 import TextBox from '../base/components/TextBox';
 import TextArea from '../base/components/TextArea';
 import Label from '../base/components/Label';
 
-export default class AddProjectWindow {
+export default class EditProjectWindow {
 
   constructor(options) {
 
@@ -17,9 +17,9 @@ export default class AddProjectWindow {
     var project = options.data;
     this.onSaveSuccess = options.onSaveSuccess;
 
-    var codeTextBox = new TextBox({height: 25, width: '90%'});
-    var nameTextBox = new TextBox({height: 25, width: '90%'});
-    var descriptionTextBox = new TextArea({height: 80, width: '92%'});
+    var codeTextBox = new TextBox({value: project.code, height: 25, width: '90%'});
+    var nameTextBox = new TextBox({value: project.name, height: 25, width: '90%'});
+    var descriptionTextBox = new TextArea({value: project.description, height: 80, width: '92%'});
 
     var formItems = [
       {
@@ -51,8 +51,8 @@ export default class AddProjectWindow {
       labelColumnWidth: '120px',
       onValidationSuccess: function(formValue){
         $.ajax({
-              method: "POST",
-              url: "/projects",
+              method: "PUT",
+              url: "/projects/" + project.code,
               data: JSON.stringify(formValue),
               beforeSend: function(xhr){
                 xhr.setRequestHeader('Accept', 'application/json');
@@ -74,26 +74,43 @@ export default class AddProjectWindow {
 
     var form = new Form(formOptions);
 
-    this.window = new AddWindow({
+    this.window = new EditWindow({
       width: 390,
       height: 250,
-      title: 'Add Project',
+      title: 'Edit Project',
       content: form,
       onSave: function(){
         form.validate();
       },
       onCancel: function(){
         _this.window.close();
+      },
+      onDelete: function(){
+        var r = confirm("Proses hapus data akan dilakukan!");
+        if (r == true) {
+          $.ajax({
+                method: "DELETE",
+                url: "/projects/" + project.code,
+                data: { }
+              }).done(function() {
+                $("#successNotification").jqxNotification("open");
+                _this.window.close();
+                if(_this.onSaveSuccess){
+                  _this.onSaveSuccess();
+                }
+              }).fail(function() {
+                var errorMessage = 'Proses gagal. Status : ' + jqXHR.status + ' [' + jqXHR.statusText + '] : ' + jqXHR.responseText;
+                $("#errorNotification").html('<div>' + errorMessage + '</div>');
+                $("#errorNotification").jqxNotification("open");
+              });
+        }
       }
     });
-
   }
 
   render(container) {
-
     var _this = this;
     this.window.render(container);
-
   }
 
   open(){
