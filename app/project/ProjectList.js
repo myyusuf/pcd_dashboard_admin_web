@@ -3,8 +3,8 @@ import Button from '../base/components/Button';
 import ToggleButton from '../base/components/ToggleButton';
 import TextBox from '../base/components/TextBox';
 import DataGrid from '../base/components/DataGrid';
-// import AddProjectWindow from '../../project/components/AddProjectWindow';
-// import EditProjectWindow from '../../project/components/EditProjectWindow';
+import AddProjectWindow from '../project/AddProjectWindow';
+// import EditProjectWindow from '../project/EditProjectWindow';
 
 export default class ProjectList {
 
@@ -46,9 +46,9 @@ export default class ProjectList {
                     return params.data;
                 },
         columns: [
-          { text: 'Kode', datafield: 'stambuk_lama', width: '33.33%' },
-          { text: 'Nama', datafield: 'stambuk_baru', width: '33.33%' },
-          { text: 'Deskripsi', datafield: 'nama', width: '33.33%'},
+          { text: 'Kode', datafield: 'code', width: '33.33%' },
+          { text: 'Nama', datafield: 'name', width: '33.33%' },
+          { text: 'Deskripsi', datafield: 'description', width: '33.33%'},
         ],
         groups: []
     }
