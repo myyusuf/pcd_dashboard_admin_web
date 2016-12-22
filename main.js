@@ -7,6 +7,7 @@ import Tabs from "./app/base/components/Tabs";
 import Button from "./app/base/components/Button";
 import WorkspaceView from "./app/WorkspaceView";
 import ProjectList from "./app/project/ProjectList";
+import ProjectProgressList from "./app/project/ProjectProgressList";
 
 var splitter = new Splitter();
 splitter.render($('#content-inside'));
@@ -20,6 +21,10 @@ var data = [
         id: 'project_list',
         label: "Daftar Proyek",
         selected: true
+      },
+      {
+        id: 'project_progress_list',
+        label: "Progres Proyek"
       }
     ]
   },
@@ -40,8 +45,12 @@ var tree = new Tree({
   onClick: function(item){
 
    if(!tabs.selectTabByTitle(item.label)){
-     if(item.id == 'project_list'){
-         tabs.add(item.id, item.label, projectList);
+    if(item.id == 'project_list'){
+      tabs.add(item.id, item.label, projectList);
+    }else{
+      if(item.id == 'project_progress_list'){
+        tabs.add(item.id, item.label, projectProgressList);
+      }
     }
     //  }else if(item.id == 'jadwal_mingguan'){
     //      tabs.add(item.id, item.label, weeklyScheduleList);
@@ -64,6 +73,7 @@ var tree = new Tree({
 });
 
 var projectList = new ProjectList();
+var projectProgressList = new ProjectProgressList();
 
 var navigationBar = new NavigationBar([{
   title: 'Application',
