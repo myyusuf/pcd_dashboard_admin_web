@@ -25,15 +25,15 @@ export default class ProjectProgressList {
           { name: 'id', type: 'int' },
           { name: 'month', type: 'int' },
           { name: 'year', type: 'int' },
-          { name: 'rkapOk', type: 'int' },
-          { name: 'rkapOp', type: 'int' },
-          { name: 'rkapLk', type: 'int' },
-          { name: 'prognosaOk', type: 'int' },
-          { name: 'prognosaOp', type: 'int' },
-          { name: 'prognosaLk', type: 'int' },
-          { name: 'realisasiOk', type: 'int' },
-          { name: 'realisasiOp', type: 'int' },
-          { name: 'realisasiLk', type: 'int' },
+          { name: 'rkapOk', type: 'float' },
+          { name: 'rkapOp', type: 'float' },
+          { name: 'rkapLk', type: 'float' },
+          { name: 'prognosaOk', type: 'float' },
+          { name: 'prognosaOp', type: 'float' },
+          { name: 'prognosaLk', type: 'float' },
+          { name: 'realisasiOk', type: 'float' },
+          { name: 'realisasiOp', type: 'float' },
+          { name: 'realisasiLk', type: 'float' },
           { name: 'description', type: 'string' },
         ],
         id: "id",
@@ -45,7 +45,7 @@ export default class ProjectProgressList {
           return data;
     }
 
-    var columnWidth = (100 / 5) + '%' ;
+    var columnWidth = (100 / 11) + '%' ;
     var dataGridOptions = {
         width: '100%',
         height: '100%',
@@ -57,11 +57,19 @@ export default class ProjectProgressList {
                     return params.data;
                 },
         columns: [
-          { text: 'Bulan', datafield: 'month', width: columnWidth },
+          { text: 'Bulan', datafield: 'month', width: columnWidth},
           { text: 'Tahun', datafield: 'year', width: columnWidth },
-          { text: 'RKAP OK', datafield: 'rkapOk', width: columnWidth },
-          { text: 'RKAP OP', datafield: 'rkapOp', width: columnWidth },
-          { text: 'RKAP LK', datafield: 'rkapLk', width: columnWidth }
+          { text: 'RKAP OK', datafield: 'rkapOk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'RKAP OP', datafield: 'rkapOp', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'RKAP LK', datafield: 'rkapLk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+
+          { text: 'Prognosa OK', datafield: 'prognosaOk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'Prognosa OP', datafield: 'prognosaOp', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'Prognosa LK', datafield: 'prognosaLk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+
+          { text: 'Realisasi OK', datafield: 'realisasiOk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'Realisasi OP', datafield: 'realisasiOp', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'Realisasi LK', datafield: 'realisasiLk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' }
         ],
         groups: []
     }

@@ -7,7 +7,7 @@ import Tabs from "./app/base/components/Tabs";
 import Button from "./app/base/components/Button";
 import WorkspaceView from "./app/WorkspaceView";
 import ProjectList from "./app/project/ProjectList";
-import ProjectProgressList from "./app/project/ProjectProgressList";
+import ProjectProgressList from "./app/project_progress/ProjectProgressList";
 
 var splitter = new Splitter();
 splitter.render($('#content-inside'));
