@@ -82,14 +82,14 @@ export default class ProjectProgressList {
       source: source,
       onSearch: onSearch,
       onRowDoubleClick: function(data){
-        var editProjectWindow = new EditProjectWindow({
-          data: data,
-          onSaveSuccess: function(){
-            _this.dataGrid.refresh();
-          }
-        });
-        editProjectWindow.render($('#dialogWindowContainer'));
-        editProjectWindow.open();
+        // var editProjectWindow = new EditProjectWindow({
+        //   data: data,
+        //   onSaveSuccess: function(){
+        //     _this.dataGrid.refresh();
+        //   }
+        // });
+        // editProjectWindow.render($('#dialogWindowContainer'));
+        // editProjectWindow.open();
       },
       dataGridOptions: dataGridOptions
     });
