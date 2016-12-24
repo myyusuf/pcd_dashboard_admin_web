@@ -34,7 +34,8 @@ export default class DataGrid {
     this.dataGridOptions['source'] = dataAdapter;
     this.dataGridOptions['altrows'] = true;
     this.dataGridOptions['columnsresize'] = true;
-    // this.dataGridOptions['pagesizeoptions'] = ['50', '100', '500'];
+    this.dataGridOptions['pagesizeoptions'] = ['50', '100', '500'];
+    this.dataGridOptions['pagesize'] = '50';
 
     var dataGridContainer = $('<div style="height: 100%"></div>');
     dataGridContainer.appendTo(container);

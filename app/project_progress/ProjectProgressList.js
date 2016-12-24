@@ -23,6 +23,8 @@ export default class ProjectProgressList {
         datatype: "json",
         datafields: [
           { name: 'id', type: 'int' },
+          { name: 'project'},
+          { name: 'project_code', type: 'string', map: 'project>code'},
           { name: 'month', type: 'int' },
           { name: 'year', type: 'int' },
           { name: 'rkapOk', type: 'float' },
@@ -45,10 +47,11 @@ export default class ProjectProgressList {
           return data;
     }
 
-    var columnWidth = (100 / 11) + '%' ;
+    var columnWidth = (100 / 12) + '%' ;
     var dataGridOptions = {
         width: '100%',
         height: '100%',
+        groupable: true,
         pageable: true,
         altrows: true,
         theme: 'metro',
@@ -57,6 +60,7 @@ export default class ProjectProgressList {
                     return params.data;
                 },
         columns: [
+          { text: 'Project Code', datafield: 'project_code', width: columnWidth},
           { text: 'Bulan', datafield: 'month', width: columnWidth},
           { text: 'Tahun', datafield: 'year', width: columnWidth },
           { text: 'RKAP OK', datafield: 'rkapOk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
@@ -71,7 +75,7 @@ export default class ProjectProgressList {
           { text: 'Realisasi OP', datafield: 'realisasiOp', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
           { text: 'Realisasi LK', datafield: 'realisasiLk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' }
         ],
-        groups: []
+        groups: ['project_code']
     }
 
     this.dataGrid = new DataGrid({
