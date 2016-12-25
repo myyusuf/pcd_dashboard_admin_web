@@ -24,6 +24,7 @@ export default class ProjectList {
           { name: 'id', type: 'int' },
           { name: 'code', type: 'string' },
           { name: 'name', type: 'string' },
+          { name: 'projectType', type: 'int' },
           { name: 'description', type: 'string' },
         ],
         id: "id",

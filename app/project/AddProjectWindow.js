@@ -5,6 +5,7 @@ import AddWindow from '../base/components/AddWindow';
 import TextBox from '../base/components/TextBox';
 import TextArea from '../base/components/TextArea';
 import Label from '../base/components/Label';
+import ProjectTypeComboBox from "./ProjectTypeComboBox";
 
 export default class AddProjectWindow {
 
@@ -19,6 +20,7 @@ export default class AddProjectWindow {
 
     var codeTextBox = new TextBox({height: 25, width: '90%'});
     var nameTextBox = new TextBox({height: 25, width: '90%'});
+    var projectTypeComboBox = new ProjectTypeComboBox({height: 25, width: '80%'});
     var descriptionTextBox = new TextArea({height: 80, width: '92%'});
 
     var formItems = [
@@ -37,6 +39,15 @@ export default class AddProjectWindow {
         content: nameTextBox,
         validation:{
           type: 'TEXTBOX',
+          rule: 'required'
+        }
+      },
+      {
+        name: 'projectType',
+        label: 'Type',
+        content: projectTypeComboBox,
+        validation:{
+          type: 'COMBOBOX',
           rule: 'required'
         }
       },
@@ -76,7 +87,7 @@ export default class AddProjectWindow {
 
     this.window = new AddWindow({
       width: 390,
-      height: 250,
+      height: 280,
       title: 'Add Project',
       content: form,
       onSave: function(){
