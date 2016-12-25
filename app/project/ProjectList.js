@@ -36,6 +36,26 @@ export default class ProjectList {
           return data;
     }
 
+    var cellsrenderer = function (row, columnfield, value, defaulthtml, columnproperties) {
+              var projectTypeDescription = "";
+
+              if(value == 1){
+                projectTypeDescription = "Proyek Lama Non JO/Non KSO";
+              }else if(value == 2){
+                projectTypeDescription = "Proyek Lama JO/KSO";
+              }else if(value == 3){
+                projectTypeDescription = "Proyek Baru Sudah Diperoleh Non JO/Non KSO";
+              }else if(value == 4){
+                projectTypeDescription = "Proyek Baru Sudah Diperoleh JO/KSO";
+              }else if(value == 5){
+                projectTypeDescription = "Proyek Baru Dalam Pengusahaan Non JO/Non KSO";
+              }else if(value == 6){
+                projectTypeDescription = "Proyek Baru Dalam Pengusahaan JO/KSO";
+              }
+
+              return '<span style="margin: 4px; float: ' + columnproperties.cellsalign + ';">' + projectTypeDescription + '</span>';
+            }
+
     var dataGridOptions = {
         width: '100%',
         height: '100%',
@@ -47,9 +67,10 @@ export default class ProjectList {
                     return params.data;
                 },
         columns: [
-          { text: 'Kode', datafield: 'code', width: '33.33%' },
-          { text: 'Nama', datafield: 'name', width: '33.33%' },
-          { text: 'Deskripsi', datafield: 'description', width: '33.33%'},
+          { text: 'Kode', datafield: 'code', width: '20%' },
+          { text: 'Nama', datafield: 'name', width: '20%' },
+          { text: 'Tipe', datafield: 'projectType', cellsrenderer: cellsrenderer, width: '30%' },
+          { text: 'Deskripsi', datafield: 'description', width: '30%'},
         ],
         groups: []
     }

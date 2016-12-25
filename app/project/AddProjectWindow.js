@@ -20,8 +20,8 @@ export default class AddProjectWindow {
 
     var codeTextBox = new TextBox({height: 25, width: '90%'});
     var nameTextBox = new TextBox({height: 25, width: '90%'});
-    var projectTypeComboBox = new ProjectTypeComboBox({height: 25, width: '80%'});
-    var descriptionTextBox = new TextArea({height: 80, width: '92%'});
+    var projectTypeComboBox = new ProjectTypeComboBox({height: 25, width: '92.5%'});
+    var descriptionTextBox = new TextArea({height: 80, width: '92.5%'});
 
     var formItems = [
       {

@@ -10,7 +10,7 @@ export default class ProjectTypeComboBox {
     this.id = guid();
 
     var typeList = [
-      {id: '1', nama: 'Proyek Lama Non JO/Non KSO'},
+      {id: '1', nama: "Proyek Lama Non JO/Non KSO"},
       {id: '2', nama: "Proyek Lama JO/KSO"},
       {id: '3', nama: "Proyek Baru Sudah Diperoleh Non JO/Non KSO"},
       {id: '4', nama: "Proyek Baru Sudah Diperoleh JO/KSO"},
@@ -21,7 +21,7 @@ export default class ProjectTypeComboBox {
       displayMember: "nama",
       valueMember: "id",
       selectedIndex: 0,
-      width: '100%',
+      width: options.width,
       height: 25,
       theme: 'metro',
       selectionMode: 'dropDownList'
