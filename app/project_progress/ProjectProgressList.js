@@ -17,25 +17,24 @@ export default class ProjectProgressList {
 
     var _this = this;
 
-    var url = "/project_progress";
+    var url = "/api/project_progress";
 
     var source = {
         datatype: "json",
         datafields: [
           { name: 'id', type: 'int' },
-          { name: 'project'},
-          { name: 'project_code', type: 'string', map: 'project>code'},
+          { name: 'project_code', type: 'string'},
           { name: 'month', type: 'int' },
           { name: 'year', type: 'int' },
-          { name: 'rkapOk', type: 'float' },
-          { name: 'rkapOp', type: 'float' },
-          { name: 'rkapLk', type: 'float' },
-          { name: 'prognosaOk', type: 'float' },
-          { name: 'prognosaOp', type: 'float' },
-          { name: 'prognosaLk', type: 'float' },
-          { name: 'realisasiOk', type: 'float' },
-          { name: 'realisasiOp', type: 'float' },
-          { name: 'realisasiLk', type: 'float' },
+          { name: 'rkap_ok', type: 'float' },
+          { name: 'rkap_op', type: 'float' },
+          { name: 'rkap_lk', type: 'float' },
+          { name: 'prognosa_ok', type: 'float' },
+          { name: 'prognosa_op', type: 'float' },
+          { name: 'prognosa_lk', type: 'float' },
+          { name: 'realisasi_ok', type: 'float' },
+          { name: 'realisasi_op', type: 'float' },
+          { name: 'realisasi_lk', type: 'float' },
           { name: 'description', type: 'string' },
         ],
         id: "id",
@@ -63,17 +62,17 @@ export default class ProjectProgressList {
           { text: 'Project Code', datafield: 'project_code', width: columnWidth},
           { text: 'Bulan', datafield: 'month', width: columnWidth},
           { text: 'Tahun', datafield: 'year', width: columnWidth },
-          { text: 'RKAP OK', datafield: 'rkapOk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
-          { text: 'RKAP OP', datafield: 'rkapOp', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
-          { text: 'RKAP LK', datafield: 'rkapLk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'RKAP OK', datafield: 'rkap_ok', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'RKAP OP', datafield: 'rkap_op', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'RKAP LK', datafield: 'rkap_lk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
 
-          { text: 'Prognosa OK', datafield: 'prognosaOk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
-          { text: 'Prognosa OP', datafield: 'prognosaOp', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
-          { text: 'Prognosa LK', datafield: 'prognosaLk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'Prognosa OK', datafield: 'prognosa_ok', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'Prognosa OP', datafield: 'prognosa_op', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'Prognosa LK', datafield: 'prognosa_lk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
 
-          { text: 'Realisasi OK', datafield: 'realisasiOk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
-          { text: 'Realisasi OP', datafield: 'realisasiOp', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
-          { text: 'Realisasi LK', datafield: 'realisasiLk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' }
+          { text: 'Realisasi OK', datafield: 'realisasi_ok', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'Realisasi OP', datafield: 'realisasi_op', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' },
+          { text: 'Realisasi LK', datafield: 'realisasi_lk', width: columnWidth, cellsalign: 'right', cellsformat: 'd2' }
         ],
         groups: ['project_code']
     }
@@ -105,7 +104,13 @@ export default class ProjectProgressList {
       }
     });
 
-    var fileUpload = new FileUpload({height: 35, width: 103, uploadUrl: '/project_progress/upload', fileInputName: 'progress'});
+    // var fileUpload = new FileUpload({height: 35, width: 103, uploadUrl: '/project_progress/upload', fileInputName: 'progress'});
+    var fileUpload = new FileUpload({
+      height: 35,
+      width: 103,
+      uploadUrl: 'api/project_progress/upload',
+      fileInputName: 'progress'
+    });
 
     var uploadButton = new Button({
       title:'Upload',

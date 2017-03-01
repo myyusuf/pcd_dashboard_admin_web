@@ -2,6 +2,10 @@ import {
   guid
 } from '../Utils';
 
+
+//DON'T PUT THIS IN <form></form> TAG
+//THIS IS NOT PART OF FORM!!!!!
+
 export default class FileUpload {
 
   constructor(options) {
@@ -15,13 +19,8 @@ export default class FileUpload {
       this.height = options.height;
     }
 
-    if(options.uploadUrl){
-      this.uploadUrl = options.uploadUrl;
-    }
-
-    if(options.fileInputName){
-      this.fileInputName = options.fileInputName;
-    }
+    this.uploadUrl = options.uploadUrl;
+    this.fileInputName = options.fileInputName;
 
   }
 
@@ -36,25 +35,20 @@ export default class FileUpload {
 
     if(this.width){
       fileUploadOptions['width'] = this.width;
+    }else{
+      fileUploadOptions['width'] = 300;
     }
 
     if(this.height){
       fileUploadOptions['height'] = this.height;
     }
 
-    if(this.uploadUrl){
-      fileUploadOptions['uploadUrl'] = this.uploadUrl;
-    }
-
-    if(this.fileInputName){
-      fileUploadOptions['fileInputName'] = this.fileInputName;
-    }
+    fileUploadOptions['uploadUrl'] = this.uploadUrl;
+    fileUploadOptions['fileInputName'] = this.fileInputName;
+    fileUploadOptions['multipleFilesUpload'] = false;
+    fileUploadOptions['autoUpload'] = true;
 
     fileUploadContainer.jqxFileUpload(fileUploadOptions);
-
-    if(this.initialValue){
-      fileUploadContainer.val(this.initialValue);
-    }
 
     this.component = fileUploadContainer;
   }
@@ -63,11 +57,7 @@ export default class FileUpload {
     return this.id;
   }
 
-  getValue(){
-    return this.component.val();
-  }
-
-  uploadFile(){
-    this.component.jqxFileUpload('uploadFile', 0);
+  upload(){
+    return this.component.jqxFileUpload('uploadAll');
   }
 }

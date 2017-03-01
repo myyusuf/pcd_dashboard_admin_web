@@ -24,6 +24,8 @@ export default class TextBox {
     this.placeHolder = options.placeHolder;
 
     this.initialValue = options.value;
+
+    this.disabled = options.disabled;
   }
 
   render(container) {
@@ -45,6 +47,10 @@ export default class TextBox {
 
     if(this.placeHolder){
       textBoxOptions['placeHolder'] = this.placeHolder;
+    }
+
+    if(this.disabled){
+      textBoxOptions['disabled'] = this.disabled;
     }
 
     textBoxContainer.jqxInput(textBoxOptions);

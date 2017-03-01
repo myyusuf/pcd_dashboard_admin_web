@@ -18,7 +18,7 @@ export default class EditProjectWindow {
     var project = options.data;
     this.onSaveSuccess = options.onSaveSuccess;
 
-    var codeTextBox = new TextBox({value: project.code, height: 25, width: '90%'});
+    var codeTextBox = new TextBox({value: project.code, disabled: true, height: 25, width: '90%'});
     var nameTextBox = new TextBox({value: project.name, height: 25, width: '90%'});
     var projectTypeComboBox = new ProjectTypeComboBox({value: project.projectType, height: 80, width: '92.5%'});
     var descriptionTextBox = new TextArea({value: project.description, height: 80, width: '92.5%'});
@@ -43,7 +43,7 @@ export default class EditProjectWindow {
         }
       },
       {
-        name: 'projectType',
+        name: 'project_type',
         label: 'Type',
         content: projectTypeComboBox,
         validation:{
@@ -63,7 +63,7 @@ export default class EditProjectWindow {
       onValidationSuccess: function(formValue){
         $.ajax({
               method: "PUT",
-              url: "/projects/" + project.code,
+              url: "/api/projects/" + project.code,
               data: JSON.stringify(formValue),
               beforeSend: function(xhr){
                 xhr.setRequestHeader('Accept', 'application/json');
@@ -75,7 +75,7 @@ export default class EditProjectWindow {
                 if(_this.onSaveSuccess){
                   _this.onSaveSuccess();
                 }
-            }).fail(function( jqXHR, textStatus, errorThrown) {
+            }).fail(function(jqXHR, textStatus, errorThrown) {
                 var errorMessage = 'Proses gagal. Status : ' + jqXHR.status + ' [' + jqXHR.statusText + '] : ' + jqXHR.responseText;
                 $("#errorNotification").html('<div>' + errorMessage + '</div>');
                 $("#errorNotification").jqxNotification("open");
@@ -101,7 +101,7 @@ export default class EditProjectWindow {
         if (r == true) {
           $.ajax({
                 method: "DELETE",
-                url: "/projects/" + project.code,
+                url: "/api/projects/" + project.code,
                 data: { }
               }).done(function() {
                 $("#successNotification").jqxNotification("open");
@@ -109,7 +109,7 @@ export default class EditProjectWindow {
                 if(_this.onSaveSuccess){
                   _this.onSaveSuccess();
                 }
-              }).fail(function() {
+              }).fail(function(jqXHR, textStatus, errorThrown) {
                 var errorMessage = 'Proses gagal. Status : ' + jqXHR.status + ' [' + jqXHR.statusText + '] : ' + jqXHR.responseText;
                 $("#errorNotification").html('<div>' + errorMessage + '</div>');
                 $("#errorNotification").jqxNotification("open");

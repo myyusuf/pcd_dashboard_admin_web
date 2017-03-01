@@ -43,7 +43,7 @@ export default class AddProjectWindow {
         }
       },
       {
-        name: 'projectType',
+        name: 'project_type',
         label: 'Type',
         content: projectTypeComboBox,
         validation:{
@@ -63,7 +63,7 @@ export default class AddProjectWindow {
       onValidationSuccess: function(formValue){
         $.ajax({
               method: "POST",
-              url: "/projects",
+              url: "/api/projects",
               data: JSON.stringify(formValue),
               beforeSend: function(xhr){
                 xhr.setRequestHeader('Accept', 'application/json');

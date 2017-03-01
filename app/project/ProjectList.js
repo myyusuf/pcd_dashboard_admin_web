@@ -16,7 +16,7 @@ export default class ProjectList {
 
     var _this = this;
 
-    var url = "/projects";
+    var url = "/api/projects";
 
     var source = {
         datatype: "json",
@@ -24,7 +24,7 @@ export default class ProjectList {
           { name: 'id', type: 'int' },
           { name: 'code', type: 'string' },
           { name: 'name', type: 'string' },
-          { name: 'projectType', type: 'int' },
+          { name: 'project_type', type: 'int' },
           { name: 'description', type: 'string' },
         ],
         id: "id",
@@ -69,7 +69,7 @@ export default class ProjectList {
         columns: [
           { text: 'Kode', datafield: 'code', width: '20%' },
           { text: 'Nama', datafield: 'name', width: '20%' },
-          { text: 'Tipe', datafield: 'projectType', cellsrenderer: cellsrenderer, width: '30%' },
+          { text: 'Tipe', datafield: 'project_type', cellsrenderer: cellsrenderer, width: '30%' },
           { text: 'Deskripsi', datafield: 'description', width: '30%'},
         ],
         groups: []
