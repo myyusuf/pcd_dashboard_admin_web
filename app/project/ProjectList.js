@@ -16,7 +16,7 @@ export default class ProjectList {
 
     var _this = this;
 
-    var url = "/api/projects";
+    var url = "/projects";
 
     var source = {
         datatype: "json",
