@@ -16,6 +16,7 @@ export default class ProjectTypeComboBox {
       {id: '4', nama: "Proyek Baru Sudah Diperoleh JO/KSO"},
       {id: '5', nama: "Proyek Baru Dalam Pengusahaan Non JO/Non KSO"},
       {id: '6', nama: "Proyek Baru Dalam Pengusahaan JO/KSO"},
+      {id: '7', nama: "Proyek Baru Dalam Pengusahaan Intern"},
     ];
     var comboBoxOptions = {
       displayMember: "nama",

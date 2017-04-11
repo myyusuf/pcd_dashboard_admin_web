@@ -51,6 +51,8 @@ export default class ProjectList {
                 projectTypeDescription = "Proyek Baru Dalam Pengusahaan Non JO/Non KSO";
               }else if(value == 6){
                 projectTypeDescription = "Proyek Baru Dalam Pengusahaan JO/KSO";
+              }else if(value == 7){
+                projectTypeDescription = "Proyek Baru Dalam Pengusahaan Intern";
               }
 
               return '<span style="margin: 4px; float: ' + columnproperties.cellsalign + ';">' + projectTypeDescription + '</span>';
