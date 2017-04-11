@@ -20,7 +20,7 @@ export default class EditProjectWindow {
 
     var codeTextBox = new TextBox({value: project.code, disabled: true, height: 25, width: '90%'});
     var nameTextBox = new TextBox({value: project.name, height: 25, width: '90%'});
-    var projectTypeComboBox = new ProjectTypeComboBox({value: project.projectType, height: 80, width: '92.5%'});
+    var projectTypeComboBox = new ProjectTypeComboBox({value: project.project_type, height: 80, width: '92.5%'});
     var descriptionTextBox = new TextArea({value: project.description, height: 80, width: '92.5%'});
 
     var formItems = [
