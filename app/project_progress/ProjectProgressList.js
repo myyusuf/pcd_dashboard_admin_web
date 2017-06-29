@@ -109,7 +109,10 @@ export default class ProjectProgressList {
       height: 35,
       width: 103,
       uploadUrl: 'project_progress/upload',
-      fileInputName: 'progress'
+      fileInputName: 'progress',
+      uploadEnd: function(serverResponse) {
+        alert(serverResponse);
+      }
     });
 
     // var uploadButton = new Button({
