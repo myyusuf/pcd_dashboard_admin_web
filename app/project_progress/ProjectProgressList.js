@@ -119,11 +119,14 @@ export default class ProjectProgressList {
           // for (var i = 0; i < responseInJson.payload.length; i++) {
           //   payloads.push(responseInJson.payload[i]);
           // }
-          const responseString = responseInJson.payload.join('\n');
+
           if (responseInJson.status === 'OK') {
             alert('Upload completed successfully');
-          } else {
+          } else if (responseInJson.status === 'ERROR') {
+            const responseString = responseInJson.payload.join('\n');
             alert('Error upload file. Unknown project codes : \n' + responseString);
+          } else {
+            alert('Error upload file. \n' + responseInJson.payload);
           }
 
         }
