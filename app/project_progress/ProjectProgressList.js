@@ -110,8 +110,23 @@ export default class ProjectProgressList {
       width: 103,
       uploadUrl: 'project_progress/upload',
       fileInputName: 'progress',
-      uploadEnd: function(serverResponse) {
-        alert(serverResponse);
+      uploadEnd: function(serverResponse, event) {
+        const responseMatchRegex = serverResponse.match(/{.+}/);
+        if (responseMatchRegex) {
+          const responseInJson = JSON.parse(responseMatchRegex[0]);
+          // console.log(responseInJson);
+          // const payloads = [];
+          // for (var i = 0; i < responseInJson.payload.length; i++) {
+          //   payloads.push(responseInJson.payload[i]);
+          // }
+          const responseString = responseInJson.payload.join('\n');
+          if (responseInJson.status === 'OK') {
+            alert('Upload completed successfully');
+          } else {
+            alert('Error upload file. Unknown project codes : \n' + responseString);
+          }
+
+        }
       }
     });
 

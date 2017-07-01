@@ -57,7 +57,7 @@ export default class FileUpload {
           var args = event.args;
           var fileName = args.file;
           var serverResponse = args.response;
-          uploadEnd(serverResponse);
+          uploadEnd(serverResponse, event);
       });
     }
 
