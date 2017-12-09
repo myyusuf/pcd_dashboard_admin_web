@@ -4,9 +4,8 @@ import Menu from 'antd/lib/menu';
 import Icon from 'antd/lib/icon';
 
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 
-const Workspace = () => {
+const Workspace = ({ children }) => {
   return (
     <Layout style={{ height: '100%' }}>
       <Header
@@ -18,7 +17,7 @@ const Workspace = () => {
         DPE Dashboard
       </Header>
       <Layout>
-        <Sider>
+        <Sider style={{ backgroundColor: '#FFF' }}>
           <Menu
             onClick={this.handleClick}
             defaultSelectedKeys={['1']}
@@ -35,7 +34,7 @@ const Workspace = () => {
             </SubMenu>
           </Menu>
         </Sider>
-        <Content>Content</Content>
+        <Content>{children}</Content>
       </Layout>
       <Footer>&copy; WIKA DPE 2018</Footer>
     </Layout>

@@ -8,11 +8,16 @@ import 'antd/dist/antd.css';
 import './App.css';
 
 import Workspace from './components/workspace/Workspace';
+import UserList from './components/user/UserList';
+import RoleList from './components/user/RoleList';
+
 
 class App extends Component {
   render() {
     let componentToRender = (
       <Workspace>
+        <Route path="/users" component={UserList} />
+        <Route path="/roles" component={RoleList} />
       </Workspace>
     );
 
