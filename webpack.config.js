@@ -1,19 +1,31 @@
 var path = require('path');
-var webpack = require('webpack');
+const BabiliPlugin = require('babili-webpack-plugin');
 
 module.exports = {
-  entry: './main.js',
-  // output: { path: __dirname, filename: 'bundle.js' },
-  output: { path: '/Users/myyusuf/Documents/Projects/WIKA/PCD/Dashboard/HapiServer/public/app/', filename: 'bundle.js' },
+  entry: './src/ceuapp.js',
+  output: {
+    path: path.resolve(__dirname, 'public/javascripts'),
+    filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   module: {
     loaders: [
       {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015']
+          presets: ['es2015', 'react']
         }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css!'
       }
-    ]
+    ],
   },
+  // plugins: [
+  //   new BabiliPlugin({}, {}),
+  // ],
 };
