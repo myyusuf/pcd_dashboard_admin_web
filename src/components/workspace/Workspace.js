@@ -2,6 +2,7 @@ import React from 'react';
 import Layout, { Header, Footer, Content, Sider } from 'antd/lib/layout';
 import Menu from 'antd/lib/menu';
 import Icon from 'antd/lib/icon';
+import { Link } from 'react-router-dom';
 
 const SubMenu = Menu.SubMenu;
 
@@ -21,16 +22,16 @@ const Workspace = ({ children }) => {
           <Menu
             onClick={this.handleClick}
             defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
+            defaultOpenKeys={['sub1', 'sub2']}
             mode="inline"
           >
             <SubMenu key="sub1" title={<span><Icon type="solution" /><span>Proyek</span></span>}>
-              <Menu.Item key="1">Daftar Proyek</Menu.Item>
+              <Menu.Item key="1"><Link to="/projects">Daftar Proyek</Link></Menu.Item>
               <Menu.Item key="2">Progress Proyek</Menu.Item>
             </SubMenu>
             <SubMenu key="sub2" title={<span><Icon type="setting" /><span>Settings</span></span>}>
-              <Menu.Item key="3">User</Menu.Item>
-              <Menu.Item key="4">Role</Menu.Item>
+              <Menu.Item key="3"><Link to="/users">User</Link></Menu.Item>
+              <Menu.Item key="4"><Link to="/roles">Role</Link></Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>

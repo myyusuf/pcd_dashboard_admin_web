@@ -8,25 +8,29 @@ import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
 import Modal from 'antd/lib/modal';
 
-import RoleWindow from './RoleWindow';
+import ProjectWindow from './ProjectWindow';
 
 const Column = Table.Column;
 const confirm = Modal.confirm;
 
-class RoleList extends Component {
+class ProjectList extends Component {
   componentWillMount() {
-    this.props.fetchRoles();
+    this.props.fetchProjects();
   }
 
   render() {
     const {
-      roles,
-      fetchRoles,
+      projects,
+      count,
+      pageSize,
+      currentPage,
+      fetchProjects,
       openAddWindow,
       openEditWindow,
       confirmDelete,
       searchText,
       searchTextChanged,
+      pageChanged,
       loading,
     } = this.props;
     return (
@@ -46,7 +50,7 @@ class RoleList extends Component {
               <Button
                 shape="circle"
                 icon="search"
-                onClick={() => fetchRoles()}
+                onClick={() => fetchProjects()}
                 style={{ marginRight: 15 }}
               />
               <Button
@@ -60,7 +64,19 @@ class RoleList extends Component {
         </Row>
         <Row>
           <Col span={24}>
-            <Table dataSource={roles} style={{ marginTop: 15 }} rowKey="id" loading={loading} size="middle">
+            <Table
+              dataSource={projects}
+              style={{ marginTop: 15 }}
+              rowKey="id"
+              loading={loading}
+              pagination={{
+                total: count,
+                current: currentPage,
+                pageSize,
+              }}
+              onChange={pagination => pageChanged(pagination.current)}
+              size="middle"
+            >
               <Column
                 title="Code"
                 dataIndex="code"
@@ -93,69 +109,82 @@ class RoleList extends Component {
           </Col>
         </Row>
 
-        <RoleWindow />
+        <ProjectWindow />
       </div>
     );
   }
 }
 
-RoleList.propTypes = {
-  fetchRoles: PropTypes.func.isRequired,
+ProjectList.propTypes = {
+  fetchProjects: PropTypes.func.isRequired,
   openAddWindow: PropTypes.func.isRequired,
   openEditWindow: PropTypes.func.isRequired,
   confirmDelete: PropTypes.func.isRequired,
   searchText: PropTypes.string.isRequired,
   searchTextChanged: PropTypes.func.isRequired,
+  pageChanged: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  roles: PropTypes.arrayOf(PropTypes.shape({
+  projects: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
+  count: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
 };
-
-// RoleList.defaultProps = {
-//   searchText: '',
-// };
 
 const mapStateToProps = state => (
   {
-    roles: state.userReducers.roles,
-    searchText: state.userReducers.roleSearch.searchText,
-    loading: state.userReducers.roleSearch.loading,
+    projects: state.projectReducers.projects.rows,
+    count: state.projectReducers.projects.count,
+    searchText: state.projectReducers.projectSearch.searchText,
+    pageSize: state.projectReducers.projectSearch.pageSize,
+    currentPage: state.projectReducers.projectSearch.currentPage,
+    loading: state.projectReducers.projectSearch.loading,
   }
 );
 
 const mapDispatchToProps = dispatch => (
   {
-    fetchRoles: () => (
+    fetchProjects: () => {
       dispatch({
-        type: 'FETCH_ROLES_LOGIC',
-      })
-    ),
+        type: 'FETCH_PROJECTS_LOGIC',
+      });
+
+      dispatch({
+        type: 'FETCH_ALL_PROJECT_TYPES_LOGIC',
+      });
+    },
     openAddWindow: () => (
       dispatch({
-        type: 'EDIT_ROLE_LOGIC',
+        type: 'EDIT_PROJECT_LOGIC',
       })
     ),
     openEditWindow: record => (
       dispatch({
-        type: 'LOAD_ROLE_TO_FORM_LOGIC',
+        type: 'LOAD_PROJECT_TO_FORM_LOGIC',
         payload: record,
       })
     ),
     searchTextChanged: value => (
       dispatch({
-        type: 'ROLE_SEARCH_TEXT_CHANGED',
+        type: 'PROJECT_SEARCH_TEXT_CHANGED',
         payload: value,
+      })
+    ),
+    pageChanged: currentPage => (
+      dispatch({
+        type: 'PROJECT_PAGE_CHANGED_LOGIC',
+        payload: currentPage,
       })
     ),
     confirmDelete: record => (
       confirm({
-        title: `Do you Want to delete role: ${record.name}`,
+        title: `Do you Want to delete project: ${record.name}`,
         content: 'This action cannot be undone',
         onOk() {
           dispatch({
-            type: 'DELETE_ROLE_LOGIC',
+            type: 'DELETE_PROJECT_LOGIC',
             payload: record,
           });
         },
@@ -167,9 +196,9 @@ const mapDispatchToProps = dispatch => (
   }
 );
 
-const RoleListWrapper = connect(
+const ProjectListWrapper = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RoleList);
+)(ProjectList);
 
-export default RoleListWrapper;
+export default ProjectListWrapper;

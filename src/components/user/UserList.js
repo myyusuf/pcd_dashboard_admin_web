@@ -34,7 +34,7 @@ class UserList extends Component {
       loading,
     } = this.props;
     return (
-      <div style={{ paddingLeft: 10, paddingRight: 10 }}>
+      <div style={{ paddingLeft: 10, paddingRight: 10, marginTop: 15 }}>
         <Row gutter={10}>
           <Col span={8}>
             <Input
@@ -66,7 +66,7 @@ class UserList extends Component {
           <Col span={24}>
             <Table
               dataSource={users}
-              style={{ marginTop: 20 }}
+              style={{ marginTop: 15 }}
               rowKey="id"
               loading={loading}
               pagination={{

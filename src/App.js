@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
 } from 'react-router-dom';
 import 'antd/dist/antd.css';
@@ -10,7 +10,7 @@ import './App.css';
 import Workspace from './components/workspace/Workspace';
 import UserList from './components/user/UserList';
 import RoleList from './components/user/RoleList';
-
+import ProjectList from './components/project/ProjectList';
 
 class App extends Component {
   render() {
@@ -18,6 +18,7 @@ class App extends Component {
       <Workspace>
         <Route path="/users" component={UserList} />
         <Route path="/roles" component={RoleList} />
+        <Route path="/projects" component={ProjectList} />
       </Workspace>
     );
 
