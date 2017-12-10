@@ -22,7 +22,7 @@ const Workspace = ({ children }) => {
           <Menu
             onClick={this.handleClick}
             defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1', 'sub2']}
+            defaultOpenKeys={['sub1', 'sub2', 'sub3']}
             mode="inline"
             style={{ height: '100%' }}
           >
@@ -30,9 +30,12 @@ const Workspace = ({ children }) => {
               <Menu.Item key="1"><Link to="/projects">Daftar Proyek</Link></Menu.Item>
               <Menu.Item key="2"><Link to="/projectprogresses">Progress Proyek</Link></Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" title={<span><Icon type="setting" /><span>Settings</span></span>}>
-              <Menu.Item key="3"><Link to="/users">User</Link></Menu.Item>
-              <Menu.Item key="4"><Link to="/roles">Role</Link></Menu.Item>
+            <SubMenu key="sub2" title={<span><Icon type="solution" /><span>Finance</span></span>}>
+              <Menu.Item key="3"><Link to="/piutangs">Piutang</Link></Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub3" title={<span><Icon type="setting" /><span>Settings</span></span>}>
+              <Menu.Item key="4"><Link to="/users">User</Link></Menu.Item>
+              <Menu.Item key="5"><Link to="/roles">Role</Link></Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>

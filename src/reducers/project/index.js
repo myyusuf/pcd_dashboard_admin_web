@@ -6,6 +6,8 @@ import projectSearch from './project_search';
 import projectTypes from './project_types';
 import projectProgresses from './project_progresses';
 import projectProgressSearch from './project_progress_search';
+import piutangs from './piutangs';
+import piutangSearch from './piutang_search';
 
 const projectReducer = combineReducers({
   projects,
@@ -15,6 +17,8 @@ const projectReducer = combineReducers({
   projectTypes,
   projectProgresses,
   projectProgressSearch,
+  piutangs,
+  piutangSearch,
 });
 
 export default projectReducer;
