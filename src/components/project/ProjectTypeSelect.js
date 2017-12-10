@@ -8,7 +8,7 @@ const Option = Select.Option;
 const ProjectTypeSelect = ({ projectTypes, value, onSelect }) => (
   <Select
     placeholder="Select Project Type"
-    style={{ width: 120 }}
+    style={{ width: '100%' }}
     onSelect={onSelect}
     value={value}
   >

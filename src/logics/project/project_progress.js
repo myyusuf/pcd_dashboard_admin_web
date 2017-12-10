@@ -4,21 +4,21 @@ import notification from 'antd/lib/notification';
 import Constant from '../../Constant';
 import { mathRandom } from '../../utils/random';
 
-const PROGRESSES_URL = `${Constant.serverUrl}/api/projectprogresses`;
+const PROJECT_PROGRESSES_URL = `${Constant.serverUrl}/api/projectprogresses`;
 
 const fetchProjectProgressesLogic = createLogic({
-  type: 'FETCH_PROGRESSES_LOGIC',
-  cancelType: 'CANCEL_FETCH_PROGRESSES_LOGIC',
+  type: 'FETCH_PROJECT_PROGRESSES_LOGIC',
+  cancelType: 'CANCEL_FETCH_PROJECT_PROGRESSES_LOGIC',
   latest: true,
   process({ getState, action }, dispatch, done) {
-    const search = getState().projectProgressReducers.projectProgressSearch;
+    const search = getState().projectReducers.projectProgressSearch;
     const paramameters = search ? { params: { ...search, r: mathRandom() } } : {};
     dispatch({ type: 'PROJECT_PROGRESS_LOADING_START' });
-    axios.get(PROGRESSES_URL, paramameters)
+    axios.get(PROJECT_PROGRESSES_URL, paramameters)
       .then(resp => resp.data)
       .then((data) => {
         dispatch({ type: 'PROJECT_PROGRESS_LOADING_FINISH' });
-        dispatch({ type: 'FETCH_PROGRESSES_SUCCESS', payload: data });
+        dispatch({ type: 'FETCH_PROJECT_PROGRESSES_SUCCESS', payload: data });
       })
       .catch((err) => {
         console.error(err);
@@ -36,7 +36,7 @@ const projectProgressPageChangedLogic = createLogic({
   type: 'PROJECT_PROGRESS_PAGE_CHANGED_LOGIC',
   process({ getState, action }, dispatch, done) {
     dispatch({ type: 'PROJECT_PROGRESS_CURRENT_PAGE_CHANGED', payload: action.payload });
-    dispatch({ type: 'FETCH_PROGRESSES_LOGIC' });
+    dispatch({ type: 'FETCH_PROJECT_PROGRESSES_LOGIC' });
     done();
   },
 });

@@ -7,6 +7,7 @@ import Table from 'antd/lib/table';
 import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
 import Upload from 'antd/lib/upload';
+import Modal from 'antd/lib/modal';
 import Constant from '../../Constant';
 
 const Column = Table.Column;
@@ -18,6 +19,26 @@ const uploadProps = {
   action: PROJECT_PROGRESS_UPLOAD_URL,
   headers: {
     authorization: 'authorization-text',
+  },
+  onChange(info) {
+    // if (info.file.status !== 'uploading') {
+    //   console.log(info.file, info.fileList);
+    // }
+    if (info.file.status === 'done') {
+      console.log(info);
+      if (info.file.response.status === 'ERROR') {
+        const description = info.file.response.payload.map(code => (<p>{code}</p>));
+        Modal.error({
+          title: 'Unidentified Project Codes: ',
+          content: (
+            <div>
+              {description}
+            </div>
+          ),
+          onOk() {},
+        });
+      }
+    }
   },
 };
 
@@ -63,7 +84,7 @@ class ProjectProgressList extends Component {
                   type="primary"
                   shape="circle"
                   icon="upload"
-                  style={{ marginLeft: 7 }}
+                  style={{ marginLeft: 0 }}
                 />
               </Upload>
             </span>

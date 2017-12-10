@@ -63,6 +63,7 @@ const ProjectForm = ({ projectForm, projectFormChanged }) => (
           colon={false}
           validateStatus={projectForm.projectType.validateStatus}
           help={projectForm.projectType.errorMsg}
+          style={{ width: '70%' }}
         >
           <ProjectTypeSelect
             value={projectForm.projectType.value}
