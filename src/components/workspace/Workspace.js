@@ -24,6 +24,7 @@ const Workspace = ({ children }) => {
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1', 'sub2']}
             mode="inline"
+            style={{ height: '100%' }}
           >
             <SubMenu key="sub1" title={<span><Icon type="solution" /><span>Proyek</span></span>}>
               <Menu.Item key="1"><Link to="/projects">Daftar Proyek</Link></Menu.Item>
@@ -35,7 +36,7 @@ const Workspace = ({ children }) => {
             </SubMenu>
           </Menu>
         </Sider>
-        <Content>{children}</Content>
+        <Content style={{ backgroundColor: '#FFF' }}>{children}</Content>
       </Layout>
       <Footer>&copy; WIKA DPE 2018</Footer>
     </Layout>

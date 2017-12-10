@@ -8,6 +8,7 @@ import Button from 'antd/lib/button';
 import Input from 'antd/lib/input';
 import Upload from 'antd/lib/upload';
 import Modal from 'antd/lib/modal';
+import numeral from 'numeral';
 import Constant from '../../Constant';
 
 const Column = Table.Column;
@@ -119,6 +120,60 @@ class ProjectProgressList extends Component {
                 title="Year"
                 dataIndex="year"
                 key="year"
+              />
+              <Column
+                title="RKAP OK"
+                dataIndex="rkapOk"
+                key="rkapOk"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="RKAP OP"
+                dataIndex="rkapOp"
+                key="rkapOp"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="RKAP LK"
+                dataIndex="rkapLk"
+                key="rkapLk"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Prognosa OK"
+                dataIndex="prognosaOk"
+                key="prognosaOk"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Prognosa OP"
+                dataIndex="prognosaOp"
+                key="prognosaOp"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Prognosa LK"
+                dataIndex="prognosaLk"
+                key="prognosaLk"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Realisasi OK"
+                dataIndex="realisasiOk"
+                key="realisasiOk"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Realisasi OP"
+                dataIndex="realisasiOp"
+                key="realisasiOp"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Realisasi LK"
+                dataIndex="realisasiLk"
+                key="realisasiLk"
+                render={text => (numeral(text).format('0,0.00'))}
               />
             </Table>
           </Col>
