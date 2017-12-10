@@ -11,6 +11,7 @@ import Workspace from './components/workspace/Workspace';
 import UserList from './components/user/UserList';
 import RoleList from './components/user/RoleList';
 import ProjectList from './components/project/ProjectList';
+import ProjectProgressList from './components/project/ProjectProgressList';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
         <Route path="/users" component={UserList} />
         <Route path="/roles" component={RoleList} />
         <Route path="/projects" component={ProjectList} />
+        <Route path="/projectprogresses" component={ProjectProgressList} />
       </Workspace>
     );
 
