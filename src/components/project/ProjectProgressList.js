@@ -106,14 +106,19 @@ class ProjectProgressList extends Component {
               size="middle"
             >
               <Column
-                title="Code"
-                dataIndex="code"
-                key="code"
+                title="Project Code"
+                dataIndex="Project.code"
+                key="Project.code"
               />
               <Column
-                title="Name"
-                dataIndex="name"
-                key="name"
+                title="Month"
+                dataIndex="month"
+                key="month"
+              />
+              <Column
+                title="Year"
+                dataIndex="year"
+                key="year"
               />
             </Table>
           </Col>
