@@ -13,6 +13,7 @@ import RoleList from './components/user/RoleList';
 import ProjectList from './components/project/ProjectList';
 import ProjectProgressList from './components/project/ProjectProgressList';
 import PiutangList from './components/project/PiutangList';
+import ProjectionList from './components/finance/ProjectionList';
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
         <Route path="/projects" component={ProjectList} />
         <Route path="/projectprogresses" component={ProjectProgressList} />
         <Route path="/piutangs" component={PiutangList} />
+        <Route path="/projections" component={ProjectionList} />
       </Workspace>
     );
 
