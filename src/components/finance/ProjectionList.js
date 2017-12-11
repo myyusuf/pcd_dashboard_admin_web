@@ -104,6 +104,30 @@ class ProjectionList extends Component {
                 dataIndex="year"
                 key="year"
               />
+              <Column
+                title="PDP"
+                dataIndex="pdp"
+                key="pdp"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Tagihan Bruto"
+                dataIndex="tagihanBruto"
+                key="tagihanBruto"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Piutang Usaha"
+                dataIndex="piutangUsaha"
+                key="piutangUsaha"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Piutang Retensi"
+                dataIndex="piutangRetensi"
+                key="piutangRetensi"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
             </Table>
           </Col>
         </Row>

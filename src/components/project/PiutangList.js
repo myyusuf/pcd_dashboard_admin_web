@@ -109,6 +109,35 @@ class PiutangList extends Component {
                 dataIndex="year"
                 key="year"
               />
+              <Column
+                title="Owner"
+                dataIndex="owner"
+                key="owner"
+              />
+              <Column
+                title="PDP 1"
+                dataIndex="pdp1"
+                key="pdp1"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Tagihan Bruto 1"
+                dataIndex="tagihanBruto1"
+                key="tagihanBruto1"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Piutang Usaha 1"
+                dataIndex="piutangUsaha1"
+                key="piutangUsaha1"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Piutang Retensi 1"
+                dataIndex="piutangRetensi1"
+                key="piutangRetensi1"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
             </Table>
           </Col>
         </Row>
