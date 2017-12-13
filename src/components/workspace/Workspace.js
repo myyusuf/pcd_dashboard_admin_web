@@ -33,10 +33,11 @@ const Workspace = ({ children }) => {
             <SubMenu key="sub2" title={<span><Icon type="solution" /><span>Finance</span></span>}>
               <Menu.Item key="3"><Link to="/piutangs">Piutang</Link></Menu.Item>
               <Menu.Item key="4"><Link to="/projections">Proyeksi</Link></Menu.Item>
+              <Menu.Item key="5"><Link to="/cashflows">Cash Flow</Link></Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" title={<span><Icon type="setting" /><span>Settings</span></span>}>
-              <Menu.Item key="5"><Link to="/users">User</Link></Menu.Item>
-              <Menu.Item key="6"><Link to="/roles">Role</Link></Menu.Item>
+              <Menu.Item key="7"><Link to="/users">User</Link></Menu.Item>
+              <Menu.Item key="8"><Link to="/roles">Role</Link></Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
