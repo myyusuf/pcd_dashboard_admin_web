@@ -95,14 +95,48 @@ class CashFlowList extends Component {
               size="middle"
             >
               <Column
+                title="Type Code"
+                dataIndex="CashFlow.typeCode"
+                key="CashFlow.typeCode"
+              />
+              <Column
+                title="Month"
+                dataIndex="month"
+                key="month"
+              />
+              <Column
                 title="Year"
-                dataIndex="year"
-                key="year"
+                dataIndex="CashFlow.year"
+                key="CashFlow.year"
               />
               <Column
                 title="RKAP"
-                dataIndex="rkap"
-                key="rkap"
+                dataIndex="CashFlow.rkap"
+                key="CashFlow.rkap"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Rolling"
+                dataIndex="CashFlow.rolling"
+                key="CashFlow.rolling"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Ra"
+                dataIndex="ra"
+                key="ra"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Prog"
+                dataIndex="prog"
+                key="prog"
+                render={text => (numeral(text).format('0,0.00'))}
+              />
+              <Column
+                title="Ri"
+                dataIndex="ri"
+                key="ri"
                 render={text => (numeral(text).format('0,0.00'))}
               />
             </Table>
