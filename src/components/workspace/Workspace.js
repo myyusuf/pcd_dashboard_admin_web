@@ -34,6 +34,7 @@ const Workspace = ({ children }) => {
               <Menu.Item key="3"><Link to="/piutangs">Piutang</Link></Menu.Item>
               <Menu.Item key="4"><Link to="/projections">Proyeksi</Link></Menu.Item>
               <Menu.Item key="5"><Link to="/cashflows">Cash Flow</Link></Menu.Item>
+              <Menu.Item key="6"><Link to="/bads">Piutang &amp; BAD</Link></Menu.Item>
             </SubMenu>
             <SubMenu key="sub3" title={<span><Icon type="setting" /><span>Settings</span></span>}>
               <Menu.Item key="7"><Link to="/users">User</Link></Menu.Item>

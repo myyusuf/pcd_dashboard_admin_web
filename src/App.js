@@ -15,6 +15,7 @@ import ProjectProgressList from './components/project/ProjectProgressList';
 import PiutangList from './components/project/PiutangList';
 import ProjectionList from './components/finance/ProjectionList';
 import CashFlowList from './components/finance/CashFlowList';
+import BadList from './components/finance/BadList';
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
         <Route path="/piutangs" component={PiutangList} />
         <Route path="/projections" component={ProjectionList} />
         <Route path="/cashflows" component={CashFlowList} />
+        <Route path="/bads" component={BadList} />
       </Workspace>
     );
 
