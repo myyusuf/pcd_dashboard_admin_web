@@ -51,7 +51,7 @@ const ProjectForm = ({ projectForm, projectFormChanged }) => (
               });
             }}
             placeholder="Name"
-            maxLength={50}
+            maxLength={150}
           />
         </FormItem>
       </Col>
